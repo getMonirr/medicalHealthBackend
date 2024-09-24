@@ -1,0 +1,1 @@
+// Clinic validation file
