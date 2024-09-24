@@ -18,4 +18,5 @@ exports.default = {
     jwt_email_verify_expires_in: process.env.JWT_EMAIL_VERIFY_EXPIRES_IN,
     email_user: process.env.EMAIL_USER,
     email_pass: process.env.EMAIL_PASS,
+    front_end_url: process.env.FRONT_END_URL,
 };

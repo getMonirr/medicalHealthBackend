@@ -23,7 +23,7 @@ const sendVerificationEmail = (userEmail, token) => __awaiter(void 0, void 0, vo
             pass: config_1.default.email_pass,
         },
     });
-    const verificationUrl = `http://localhost:3000/auth/verify-email?token=${token}`;
+    const verificationUrl = `${config_1.default.front_end_url}/auth/verify-email?token=${token}`;
     const mailOptions = {
         from: config_1.default.email_user,
         to: userEmail,

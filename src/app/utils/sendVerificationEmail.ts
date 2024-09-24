@@ -13,7 +13,7 @@ export const sendVerificationEmail = async (
     },
   })
 
-  const verificationUrl = `http://localhost:3000/auth/verify-email?token=${token}`
+  const verificationUrl = `${config.front_end_url}/auth/verify-email?token=${token}`
 
   const mailOptions = {
     from: config.email_user,

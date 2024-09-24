@@ -21,7 +21,7 @@ app.use((0, cors_1.default)());
 app.use('/api/v1', routes_1.default);
 // welcome route
 app.get('/', (req, res) => {
-    res.send('Welcome to the API Server boilerplate');
+    res.send('Welcome to Medical Health API');
 });
 // global error handler
 app.use(globalErrorHandler_1.default);

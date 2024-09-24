@@ -22,7 +22,7 @@ app.use('/api/v1', router)
 
 // welcome route
 app.get('/', (req: Request, res: Response) => {
-  res.send('Welcome to the API Server boilerplate')
+  res.send('Welcome to Medical Health API')
 })
 
 // global error handler
