@@ -19,7 +19,7 @@ const sendResponse_1 = __importDefault(require("../../utils/sendResponse"));
 const doctor_service_1 = require("./doctor.service");
 // get all doctors with specialty filter
 const getDoctors = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const specialty = req.query;
+    const { specialty } = req.query;
     const doctors = yield doctor_service_1.doctorServices.getDoctors(specialty);
     return (0, sendResponse_1.default)(res, {
         statusCode: http_status_1.default.OK,

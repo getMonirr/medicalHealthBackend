@@ -16,8 +16,11 @@ exports.doctorServices = void 0;
 const doctor_model_1 = __importDefault(require("./doctor.model"));
 // get doctors with specialty filter
 const getDoctors = (specialty) => __awaiter(void 0, void 0, void 0, function* () {
-    if (specialty) {
-        return yield doctor_model_1.default.find(specialty).limit(6);
+    if (specialty === 'All') {
+        return yield doctor_model_1.default.find().limit(6);
+    }
+    else if (specialty) {
+        return yield doctor_model_1.default.find({ specialty }).limit(6);
     }
     else {
         return yield doctor_model_1.default.find().limit(6);
