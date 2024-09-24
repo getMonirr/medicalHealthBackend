@@ -5,7 +5,7 @@ import { doctorServices } from './doctor.service'
 
 // get all doctors with specialty filter
 const getDoctors = catchAsync(async (req, res) => {
-  const specialty = req.query
+  const { specialty } = req.query
 
   const doctors = await doctorServices.getDoctors(specialty)
 
