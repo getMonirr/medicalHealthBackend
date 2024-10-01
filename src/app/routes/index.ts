@@ -1,6 +1,7 @@
 import { Router } from 'express'
 import { clinicRoutes } from '../modules/Clinic/clinic.route'
 import { doctorRoutes } from '../modules/Doctor/doctor.route'
+import { paymentRoutes } from '../modules/Payment/payment.route'
 import { testimonialsRoutes } from '../modules/Testimonial/testimonial.route'
 import { UserRoutes } from '../modules/User/user.route'
 
@@ -22,6 +23,10 @@ const moduleRoutes = [
   {
     path: '/clinics',
     route: clinicRoutes,
+  },
+  {
+    path: '/payments',
+    route: paymentRoutes,
   },
 ]
 

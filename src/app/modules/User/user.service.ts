@@ -65,7 +65,7 @@ const verifyEmail = async (token: string) => {
 
   // generate auth token
   const authToken = generateAuthToken(
-    { email: user.email },
+    { email: user.email, id: user._id },
     config.jwt_access_expires_in as string,
   )
 
@@ -92,7 +92,7 @@ const loginUser = async (email: string, password: string) => {
 
   // generate auth token
   const authToken = generateAuthToken(
-    { email: user.email },
+    { email: user.email, id: user._id },
     config.jwt_access_expires_in as string,
   )
 

@@ -16,4 +16,5 @@ export default {
   email_user: process.env.EMAIL_USER,
   email_pass: process.env.EMAIL_PASS,
   front_end_url: process.env.FRONT_END_URL,
+  stripe_secret_key: process.env.STRIPE_SECRET_KEY,
 }
