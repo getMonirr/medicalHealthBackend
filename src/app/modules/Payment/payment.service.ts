@@ -36,7 +36,17 @@ const makePaymentToDatabase = async (paymentData: IPaymentData) => {
   return payment
 }
 
+// get payment details
+const getPayments = async (id: string) => {
+  const payments = await Payment.find({
+    userId: id,
+  }).populate('doctorId')
+
+  return payments
+}
+
 export const paymentServices = {
   createPaymentIntent,
   makePaymentToDatabase,
+  getPayments,
 }

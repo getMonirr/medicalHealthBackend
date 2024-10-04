@@ -3,6 +3,9 @@ import { paymentController } from './payment.controller'
 
 const router = Router()
 
+// get payment
+router.route('/').get(paymentController.getPayments)
+
 // create payment intent
 router
   .route('/create-payment-intent')

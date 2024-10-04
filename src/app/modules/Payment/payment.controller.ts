@@ -1,6 +1,8 @@
 import httpStatus from 'http-status'
+import config from '../../config'
 import catchAsync from '../../utils/catchAsync'
 import sendResponse from '../../utils/sendResponse'
+import { decodeToken } from '../../utils/token/decodeToken'
 import { paymentServices } from './payment.service'
 
 // create client secret controller
@@ -45,7 +47,27 @@ const makePayment = catchAsync(async (req, res) => {
   })
 })
 
+// get payment controller
+const getPayments = catchAsync(async (req, res) => {
+  const token = req.headers.authorization?.split(' ')[1] as string
+
+  const decodedToken = decodeToken(
+    token,
+    config.jwt_email_verify_secret as string,
+  ) as { id: string }
+
+  const payments = await paymentServices.getPayments(decodedToken.id)
+
+  return sendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    data: payments,
+    message: 'Payments retrieved successfully',
+  })
+})
+
 export const paymentController = {
   createClientSecret,
   makePayment,
+  getPayments,
 }
