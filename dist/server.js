@@ -16,6 +16,7 @@ const mongoose_1 = __importDefault(require("mongoose"));
 const app_1 = __importDefault(require("./app"));
 // import seedSuperAdmin from './app/DB';
 const config_1 = __importDefault(require("./app/config"));
+const socket_io_1 = require("socket.io");
 let server;
 function main() {
     return __awaiter(this, void 0, void 0, function* () {
@@ -24,6 +25,19 @@ function main() {
             // seedSuperAdmin();
             server = app_1.default.listen(config_1.default.port, () => {
                 console.log(`app is listening on port ${config_1.default.port}`);
+            });
+            const io = new socket_io_1.Server(server, { cors: { origin: '*' } });
+            io.on('connection', socket => {
+                // console.log({ socket })
+                // Listen for sendMessage event
+                socket.on('sendMessage', message => {
+                    console.log('Message received:', message);
+                    // Broadcast the message to all clients
+                    io.emit('receiveMessage', message);
+                });
+                socket.on('disconnect', () => {
+                    console.log('user disconnected');
+                });
             });
         }
         catch (err) {

@@ -54,7 +54,7 @@ const verifyEmail = (token) => __awaiter(void 0, void 0, void 0, function* () {
     }, { new: true });
     console.log({ updateUser });
     // generate auth token
-    const authToken = (0, generateAuthToken_1.generateAuthToken)({ email: user.email }, config_1.default.jwt_access_expires_in);
+    const authToken = (0, generateAuthToken_1.generateAuthToken)({ email: user.email, id: user._id }, config_1.default.jwt_access_expires_in);
     return { token: authToken };
 });
 // login user
@@ -71,7 +71,7 @@ const loginUser = (email, password) => __awaiter(void 0, void 0, void 0, functio
         throw new AppError_1.default(http_status_1.default.UNAUTHORIZED, 'Invalid Password');
     }
     // generate auth token
-    const authToken = (0, generateAuthToken_1.generateAuthToken)({ email: user.email }, config_1.default.jwt_access_expires_in);
+    const authToken = (0, generateAuthToken_1.generateAuthToken)({ email: user.email, id: user._id }, config_1.default.jwt_access_expires_in);
     return { token: authToken };
 });
 // export user services
